@@ -1,0 +1,29 @@
+services:
+  opencode:
+    build: .
+    command: 
+      - serve
+      - --port=3000
+      - --hostname=0.0.0.0
+      - --print-logs
+    environment:
+      - GH_TOKEN=${GH_TOKEN}
+      - OPENCODE_SERVER_PASSWORD=${OPENCODE_SERVER_PASSWORD}
+      - NODE_ENV=${NODE_ENV:-development}
+    # Standard Dokploy mapping; the external port is usually handled by Traefik
+    ports:
+      - "4000:3000"
+    volumes:
+      - opencode-config:/home/ubuntu/.config/opencode
+      - opencode-auth:/home/ubuntu/.local/share/opencode
+    networks:
+      - dokploy-network
+    restart: unless-stopped
+
+networks:
+  dokploy-network:
+    external: true
+
+volumes:
+  opencode-config:
+  opencode-auth:
