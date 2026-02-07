@@ -9,27 +9,24 @@ RUN dnf install -y curl git && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
 
-# Create ubuntu user if it doesn't exist and set up directories
+# Create ubuntu user and directories
 RUN id -u ubuntu &>/dev/null || useradd -m -s /bin/bash ubuntu && \
-    mkdir -p /home/ubuntu/.config/opencode /home/ubuntu/.local/share/opencode && \
+    mkdir -p /home/ubuntu/.config/opencode \
+             /home/ubuntu/.local/share/opencode \
+             /home/ubuntu/.cache/opencode && \
     chown -R ubuntu:ubuntu /home/ubuntu
 
-# Copy configuration files before switching to ubuntu user
-COPY opencode.json /home/ubuntu/.config/opencode/opencode.json
-COPY oh-my-opencode.json /home/ubuntu/.config/opencode/oh-my-opencode.json
-
-# Set proper ownership of config files
-RUN chown -R ubuntu:ubuntu /home/ubuntu/.config/opencode
+# Copy configuration files
+COPY --chown=ubuntu:ubuntu opencode.json /home/ubuntu/.config/opencode/opencode.json
+COPY --chown=ubuntu:ubuntu oh-my-opencode.json /home/ubuntu/.config/opencode/oh-my-opencode.json
 
 # Switch to non-root user
 USER ubuntu
 
 WORKDIR /home/ubuntu
 
-# Install plugins at build time (OpenCode will process config and install npm plugins)
-RUN mkdir -p /home/ubuntu/.cache/opencode/node_modules
-
 EXPOSE 3000
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+# Enhanced healthcheck with more time for plugin installation
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
     CMD curl -f http://localhost:3000/ || exit 1
