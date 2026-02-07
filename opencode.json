@@ -1,7 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "default-dark",
-  "logLevel": "INFO",
+  "logLevel": "DEBUG",
   "default_agent": "Speed_Reader",
   "model": "zai-coding-plan/glm-4.7",
   "provider": {
@@ -10,7 +10,7 @@
       "name": "Z.AI Coding Plan",
       "options": {
         "baseURL": "https://api.z.ai/api/coding/paas/v4/",
-        "apiKey": "97c19e56f8364907a1d9acf0de5f9630.FofbSJ98JBDZjJQs"
+        "apiKey": "${ZAI_API_KEY}"
       },
       "models": {
         "glm-4.7": {
@@ -29,7 +29,7 @@
     },
     "github-copilot": {
       "options": {
-        "apiKey": ""
+        "apiKey": "${GH_TOKEN}"
       }
     }
   },
@@ -51,14 +51,14 @@
   "mcp": {
     "filesystem": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/"],
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/home/ubuntu"],
       "enabled": true
     },
     "memory": {
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
       "environment": {
-        "MEMORY_FILE_PATH": "/Users/vitorcalvi/.config/opencode/memory.json"
+        "MEMORY_FILE_PATH": "/home/ubuntu/.config/opencode/memory.json"
       },
       "enabled": true
     },
@@ -70,9 +70,10 @@
     "github": {
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "environment": {
+        "GITHUB_TOKEN": "${GH_TOKEN}"
+      },
       "enabled": true
-  
-    
     },
     "sequential-thinking": {
       "type": "local",
