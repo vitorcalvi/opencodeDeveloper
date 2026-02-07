@@ -71,25 +71,8 @@
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
       "enabled": true
-    },
-    "qdrant": {
-      "type": "local",
-      "command": ["npx", "-y", "better-qdrant-mcp-server"],
-      "environment": {
-        "QDRANT_URL": "http://192.168.20.10:6333",
-        "QDRANT_HOST": "192.168.20.10",
-        "QDRANT_PORT": "6333"
-      },
-      "enabled": true
-    },
-    "mcp-dbs": {
-      "type": "local",
-      "command": ["npx", "-y", "mcp-dbs", "--stdio"],
-      "environment": {
-        "DATABASE_TYPE": "sqlite",
-        "SQLITE_PATH": "/Users/vitorcalvi/.config/opencode/database.db"
-      },
-      "enabled": true
+  
+    
     },
     "sequential-thinking": {
       "type": "local",
