@@ -10,7 +10,7 @@
       "name": "Z.AI Coding Plan",
       "options": {
         "baseURL": "https://api.z.ai/api/coding/paas/v4/",
-        "apiKey": "${ZAI_API_KEY}"
+        "apiKey": "97c19e56f8364907a1d9acf0de5f9630.FofbSJ98JBDZjJQs"
       },
       "models": {
         "glm-4.7": {
@@ -29,7 +29,7 @@
     },
     "github-copilot": {
       "options": {
-        "apiKey": "${GH_TOKEN}"
+        "apiKey": ""
       }
     }
   },
@@ -71,7 +71,7 @@
       "type": "local",
       "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
       "environment": {
-        "GITHUB_TOKEN": "${GH_TOKEN}"
+        "GITHUB_TOKEN": ""
       },
       "enabled": true
     },
