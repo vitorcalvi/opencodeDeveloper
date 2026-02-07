@@ -26,8 +26,6 @@ RUN dnf install -y \
     libxkbcommon \
     libXrandr \
     alsa-lib && \
-    curl -fsSL https://cli.github.com/packages/rpm/gh-cli.repo -o /etc/yum.repos.d/gh-cli.repo && \
-    dnf install -y gh && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
 
@@ -49,7 +47,7 @@ USER ubuntu
 
 WORKDIR /home/ubuntu
 
-EXPOSE 3000
+EXPOSE 4000
 
 # Enhanced healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \

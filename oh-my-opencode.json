@@ -20,8 +20,8 @@
       }
     },
     "opencoder": {
-      "model": "github-copilot/gpt-5-mini",
-      "description": "Graph-aware coder using GPT-5-mini. Follows AST/LSP call hierarchies to prevent hallucinations.",
+      "model": "zai-coding-plan/glm-4.7",
+      "description": "Graph-aware coder using GLM-4.7. Follows AST/LSP call hierarchies to prevent hallucinations.",
       "permissions": {
         "bash": "allow",
         "edit": "allow",
@@ -47,7 +47,7 @@
       }
     },
     "fast_coder_grok": {
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "zai-coding-plan/glm-4.7",
       "description": "Agentic coding agent with 256K context. Supports reasoning loops and parallel tool execution. Best for complex multi-step tasks and large codebase analysis.",
       "permissions": {
         "bash": "allow",

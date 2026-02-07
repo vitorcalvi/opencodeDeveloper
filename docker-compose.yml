@@ -7,7 +7,6 @@ services:
       - --hostname=0.0.0.0
       - --print-logs
     environment:
-      - GH_TOKEN=${GH_TOKEN}
       - OPENCODE_SERVER_PASSWORD=${OPENCODE_SERVER_PASSWORD}
       - NODE_ENV=${NODE_ENV:-development}
     # Standard Dokploy mapping; the external port is usually handled by Traefik

@@ -26,11 +26,6 @@
           "maxTokens": 8192
         }
       }
-    },
-    "github-copilot": {
-      "options": {
-        "apiKey": ""
-      }
     }
   },
   "keybinds": {
@@ -65,11 +60,6 @@
     "git-mcp": {
       "type": "local",
       "command": ["npx", "-y", "git-mcp"],
-      "enabled": true
-    },
-    "github": {
-      "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
       "enabled": true
     },
     "qdrant": {

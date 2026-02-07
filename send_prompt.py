@@ -4,7 +4,7 @@ import sys
 
 # Configuration
 BASE_URL = "http://brain:4000"
-MODEL = "github-copilot/grok-code-fast-1"
+MODEL = "zai-coding-plan/glm-4.7"
 PROMPT = "What is the capital of France?"
 
 def create_session():
