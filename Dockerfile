@@ -47,7 +47,7 @@ USER ubuntu
 
 WORKDIR /home/ubuntu
 
-EXPOSE 4000
+EXPOSE 3000
 
 # Enhanced healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
