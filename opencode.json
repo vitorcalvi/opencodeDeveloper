@@ -1,0 +1,124 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "default-dark",
+  "logLevel": "INFO",
+  "default_agent": "Speed_Reader",
+  "model": "zai-coding-plan/glm-4.7",
+  "provider": {
+    "zai-coding-plan": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Z.AI Coding Plan",
+      "options": {
+        "baseURL": "https://api.z.ai/api/coding/paas/v4/",
+        "apiKey": "97c19e56f8364907a1d9acf0de5f9630.FofbSJ98JBDZjJQs"
+      },
+      "models": {
+        "glm-4.7": {
+          "name": "GLM-4.7",
+          "maxTokens": 8192
+        },
+        "glm-4.5-air": {
+          "name": "GLM-4.5-Air",
+          "maxTokens": 8192
+        },
+        "glm-4.6": {
+          "name": "GLM-4.6",
+          "maxTokens": 8192
+        }
+      }
+    },
+    "github-copilot": {
+      "options": {
+        "apiKey": ""
+      }
+    }
+  },
+  "keybinds": {
+    "variant_cycle": "ctrl+t",
+    "sidebar_toggle": "ctrl+b",
+    "editor_open": "ctrl+e",
+    "session_new": "ctrl+n",
+    "status_view": "ctrl+s"
+  },
+  "plugin": [
+    "oh-my-opencode@3.2.4",
+    "opencode-sessions@1.0.0",
+    "opencode-pty@0.1.4",
+    "opencode-synced",
+    "@tarquinen/opencode-dcp@1.2.1",
+    "opencode-agent-browser"
+  ],
+  "mcp": {
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/"],
+      "enabled": true
+    },
+    "memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "environment": {
+        "MEMORY_FILE_PATH": "/Users/vitorcalvi/.config/opencode/memory.json"
+      },
+      "enabled": true
+    },
+    "git-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "git-mcp"],
+      "enabled": true
+    },
+    "github": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "enabled": true
+    },
+    "qdrant": {
+      "type": "local",
+      "command": ["npx", "-y", "better-qdrant-mcp-server"],
+      "environment": {
+        "QDRANT_URL": "http://192.168.20.10:6333",
+        "QDRANT_HOST": "192.168.20.10",
+        "QDRANT_PORT": "6333"
+      },
+      "enabled": true
+    },
+    "mcp-dbs": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-dbs", "--stdio"],
+      "environment": {
+        "DATABASE_TYPE": "sqlite",
+        "SQLITE_PATH": "/Users/vitorcalvi/.config/opencode/database.db"
+      },
+      "enabled": true
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "enabled": true
+    },
+    "spec-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "spec-mcp"],
+      "enabled": true
+    }
+  },
+  "agent": {
+    "Speed_Reader": {
+      "description": "GLM-4.7 for rapid coding and analysis (55+ tok/sec)",
+      "mode": "primary",
+      "model": "zai-coding-plan/glm-4.7",
+      "temperature": 0.3
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "read": "allow",
+    "bash": {"*": "allow"},
+    "webfetch": "allow",
+    "websearch": "allow",
+    "codesearch": "allow",
+    "lsp": "allow",
+    "grep": "allow",
+    "mcp": "allow"
+  }
+}

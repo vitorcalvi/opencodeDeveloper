@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "defaults": {
+    "primary_agent": "Sisyphus",
+    "coding_agent": "opencoder",
+    "research_agent": "oracle"
+  },
+  "agents": {
+    "sisyphus": {
+      "model": "zai-coding-plan/glm-4.7",
+      "description": "Primary orchestrator with reasoning enabled. Plans multi-step solutions via symbolic delegation. High reasoning (150 steps).",
+      "permissions": {
+        "bash": "allow",
+        "edit": "allow",
+        "websearch": "allow",
+        "lsp": "allow",
+        "codesearch": "allow",
+        "doom_loop": "allow"
+      }
+    },
+    "opencoder": {
+      "model": "github-copilot/gpt-5-mini",
+      "description": "Graph-aware coder using GPT-5-mini. Follows AST/LSP call hierarchies to prevent hallucinations.",
+      "permissions": {
+        "bash": "allow",
+        "edit": "allow",
+        "lsp": "allow",
+        "codesearch": "allow",
+        "grep": "allow"
+      }
+    },
+    "oracle": {
+      "model": "zai-coding-plan/glm-4.6",
+      "description": "Research specialist. Accesses live web + Context7 for verified documentation. Balanced performance for web search.",
+      "permissions": {
+        "websearch": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "speed_reader": {
+      "model": "zai-coding-plan/glm-4.5-air",
+      "description": "Ultra-fast lightweight agent for quick code analysis and summarization. Speed-critical tasks.",
+      "permissions": {
+        "read": "allow",
+        "grep": "allow"
+      }
+    },
+    "fast_coder_grok": {
+      "model": "github-copilot/grok-code-fast-1",
+      "description": "Agentic coding agent with 256K context. Supports reasoning loops and parallel tool execution. Best for complex multi-step tasks and large codebase analysis.",
+      "permissions": {
+        "bash": "allow",
+        "edit": "allow",
+        "grep": "allow",
+        "read": "allow",
+        "codesearch": "allow"
+      }
+    }
+  }
+}
